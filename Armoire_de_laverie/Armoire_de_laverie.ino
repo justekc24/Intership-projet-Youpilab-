@@ -42,7 +42,11 @@ void loop() {
 }
 void openDoor()
 {
-  
+   for (int i = 0; i <= 90; i++) {
+      porte.write(i);
+      delay(15);
+    }
+
 }
 
 void closeDoor()
@@ -61,4 +65,5 @@ void legIn()
 }
   
   
+
 
