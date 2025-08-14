@@ -9,19 +9,19 @@ LiquidCrystal_I2C lcd(0x27,20,4);
 I2CKeyPad keypad(I2C_ADDR);
 const char keyMap[19] = "123456789*0#"; 
 
-#define ENA D5
-#define IN1 D6
-#define IN2 D7
-#define IN3 D0
-#define IN4 D8
-#define ENB D3
+#define ENA D1
+#define IN1 D2
+#define IN2 D3
+#define IN3 D4
+#define IN4 D5
+#define ENB D6
 //VITESSE MAXIMALE DES MOTEURS
 int speed = 255;
 
 Servo porte1;
 Servo porte2;
-int motor1Pin = D3;
-int motor2Pin = D1;
+int motor1Pin = D7;
+int motor2Pin = D8;
 
 //char valeurs[10];   // Tableau pour stocker les valeurs
 //char indexTableau = 0; // Position actuelle dans le tableau
@@ -50,8 +50,8 @@ Keypad keypad = Keypad( makeKeymap(keys), rowPins, colPins, ROWS, COLS );
 */
 
 
- int bp1Pin =  D4;
- //int bp2Pin = D0;
+ #define bp1Pin A0
+ #define bp2Pin D4
 
 void setup() {
   // put your setup code here, to run once:
