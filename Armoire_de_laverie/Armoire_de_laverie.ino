@@ -221,7 +221,7 @@ void closeDoor( Servo moteur,int n)
     }
   }
   if (count == 0) {
-    Serial.println("⚠️ Aucun périphérique I2C détecté !");
+    Serial.println("Aucun périphérique I2C détecté !");
   }
 
  
@@ -292,5 +292,6 @@ void closeDoor( Servo moteur,int n)
   }
 }
   
+
 
 
