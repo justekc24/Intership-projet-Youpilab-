@@ -88,7 +88,7 @@ void loop() {
   if (bp1 == 0)
   {
     lcd.clear();
-    openDoor(porte1);
+    openDoor(porte1,1);
     delay(100);
     legOut(1);
     delay(20);
@@ -109,7 +109,7 @@ void loop() {
     
    lcdPrint(texte = "Pour rétirer votre colis veillez entrez le code suivant: 1234",temps);
     delay(200);
-    closeDoor(porte1);
+    closeDoor(porte1,1);
     
   }
   if (bp2 <= 500 )
@@ -125,11 +125,11 @@ void loop() {
     delay(10);
     lcdPrint(texte = "Votre colis est prêt ",temps);
     delay(200);
-    openDoor(porte2);
+    openDoor(porte2,2);
     legOut(2);
     delay(1000);
     legIn(2);
-    closeDoor(porte2);
+    closeDoor(porte2,2);
     lcd.clear();
   }
 }
@@ -188,21 +188,24 @@ void lcdPrint(String texte, int t)
   }
 
 
-  void openDoor( Servo moteur)
+  void openDoor( Servo moteur, int n)
 {
-   for (int i = 0; i <= 90; i++) {
-      moteur.write(i);
-      delay(15);
-    }
+   for (int pos = 0; pos <= 180; pos += 5) {
+    moteur.write(pos);
+    if (n==2){moteur.write(180- pos);}
+    moteur.write(180 - pos);  // inverse, juste pour voir les deux bouger différemment
+    delay(20);
+  }
 }
 
-void closeDoor( Servo moteur)
+void closeDoor( Servo moteur,int n)
 {
-  for (int i = 90; i <= 0; i--) {
-      moteur.write(i);
-      delay(15);
-    }
+  for (int pos = 180; pos >= 0; pos -= 5) {
+    moteur.write(pos);
+    if (n==2){moteur.write(180- pos);}
+    delay(20);
 
+  }
 }
 
  void I2Cinit()
@@ -289,4 +292,5 @@ void closeDoor( Servo moteur)
   }
 }
   
-  
+
+
